@@ -1,16 +1,11 @@
-require("@nomiclabs/hardhat-waffle");
-require("@nomiclabs/hardhat-etherscan");
-require("hardhat-deploy");
-require("solidity-coverage");
-require("hardhat-gas-reporter");
-// require("hardhat-contract-sizer");
-require("dotenv").config();
-
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
+import "@typechain/hardhat";
+import "@nomiclabs/hardhat-waffle";
+import "@nomiclabs/hardhat-etherscan";
+import "@nomiclabs/hardhat-ethers";
+import "hardhat-gas-reporter";
+import "dotenv/config";
+import "solidity-coverage";
+import "hardhat-deploy";
 
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || "";
 const SEPOLIA_RPC_URL =
