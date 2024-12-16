@@ -1,4 +1,25 @@
-const networkConfig = {
+export const MIN_DELAY = 3600;
+
+export const VOTING_PERIOD = 5;
+
+export const VOTING_DELAY = 1;
+
+export const QUORUM_PERCENTAGE = 4;
+
+export const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000";
+
+interface NetworkConfig {
+  name: string;
+  ethUsdPriceFeed: string;
+  vrfCoordinatorV2?: string; // Optional, because not all networks have this field (localhost does not)
+  gasLane: string;
+  callbackGasLimit: string; // This is a string, as it's a large number in string format
+  mintFee: string; // Same as above, it's a string due to the large number
+  subscriptionId: string | number; // This could be a string or number depending on the network
+  blockConfirmations: number;
+}
+
+export const networkConfig: { [key: number]: NetworkConfig } = {
   31337: {
     name: "localhost",
     ethUsdPriceFeed: "0x694AA1769357215DE4FAC081bf1f309aDC325306",
@@ -7,8 +28,8 @@ const networkConfig = {
     mintFee: "10000000000000000", // 0.01 ETH
     callbackGasLimit: "50000000", // 500,000 gas
     subscriptionId: 1,
+    blockConfirmations: 1,
   },
-  // Price Feed Address, values can be obtained at https://docs.chain.link/data-feeds/price-feeds/addresses
   11155111: {
     name: "sepolia",
     ethUsdPriceFeed: "0x694AA1769357215DE4FAC081bf1f309aDC325306",
@@ -19,16 +40,8 @@ const networkConfig = {
     mintFee: "10000000000000000", // 0.01 ETH
     subscriptionId:
       "51238782602135163638734166276964334503598593971092232547118543695384205557554",
+    blockConfirmations: 6,
   },
 };
 
-const DECIMALS = "18";
-const INITIAL_PRICE = "200000000000000000000";
-const developmentChains = ["hardhat", "localhost"];
-
-module.exports = {
-  networkConfig,
-  developmentChains,
-  DECIMALS,
-  INITIAL_PRICE,
-};
+export const developmentChains = ["hardhat", "localhost"];
