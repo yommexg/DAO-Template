@@ -24,8 +24,8 @@ const deployGovernorContract: DeployFunction = async function ({
     governanceToken.address,
     timeLock.address,
     QUORUM_PERCENTAGE,
-    VOTING_DELAY,
     VOTING_PERIOD,
+    VOTING_DELAY,
   ];
   const chainId = network.config.chainId;
 

@@ -6,6 +6,7 @@ import "hardhat-gas-reporter";
 import "dotenv/config";
 import "solidity-coverage";
 import "hardhat-deploy";
+import "@typechain/hardhat";
 import { HardhatUserConfig } from "hardhat/config";
 
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || "";
@@ -50,6 +51,11 @@ const config: HardhatUserConfig = {
         runs: 200,
       },
     },
+  },
+
+  typechain: {
+    outDir: "typechain-types",
+    target: "ethers-v5",
   },
 
   etherscan: {
